@@ -1,0 +1,22 @@
+@use "../utils/" as set;
+
+/* Boilerplate */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background-color: set.$bg-color;
+  color: set.$text-color;
+  font-family: "Poppins", sans-serif;
+}

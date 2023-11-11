@@ -1,0 +1,54 @@
+@use "../utils" as set;
+
+.footer {
+  padding: 50px 15% -10px;
+  border-top: 6px solid set.$gray;
+  color: #777;
+
+  h2 {
+    font-size: 18px;
+    font-weight: 400;
+		margin: 30px;
+  }
+
+  &__col {
+    flex-grow: 1;
+    margin-bottom: 20px;
+
+    a {
+      display: block;
+      text-decoration: underline;
+      color: #777;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__row {
+    padding: 10px 25px;
+		display: flex;
+  }
+
+  .language-btn {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 3px;
+		margin-left: 20px;
+
+		img {
+			width: 10px;
+			margin-left: 10px;
+		}
+  }
+
+	.copyright-txt {
+		font-size: 14px;
+		margin-top: 20px;
+		margin-bottom: 10px;
+		margin-left: 20px;
+	}
+}

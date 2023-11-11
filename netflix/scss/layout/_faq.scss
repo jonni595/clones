@@ -1,0 +1,118 @@
+@use "../utils" as set;
+
+.faq {
+  padding: 10px 12%;
+  text-align: center;
+  font-size: 18px;
+
+  h2 {
+    font-weight: 500;
+    font-size: 40px;
+
+    @media (width < 600px) {
+      font-size: 20px;
+    }
+  }
+
+  &__accordion {
+    margin: 60px auto;
+    width: 100%;
+    max-width: 750px;
+
+    li {
+      list-style: none;
+      width: 100%;
+      padding: 5px;
+
+      label {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        font-size: 18px;
+        font-weight: 500;
+        background: set.$bg-label;
+        margin-bottom: 2px;
+        cursor: pointer;
+        position: relative;
+
+        @media (width < 600px) {
+          padding: 10px;
+          font-size: 14px;
+        }
+      }
+
+      label::after {
+        content: "+";
+        font-size: 34px;
+        position: absolute;
+        right: 20px;
+        transition: transform 0.5s;
+
+        @media (width < 600px) {
+          font-size: 22px;
+        }
+      }
+
+      input[type="radio"] {
+        display: none;
+      }
+
+      .content {
+        background: set.$bg-label;
+        text-align: left;
+        padding: 0 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s, padding 0.5s;
+
+        @media (width < 600px) {
+          font-size: 14px;
+        }
+      }
+
+      input[type="radio"]:checked + label + .content {
+        max-height: 600px;
+        padding: 30px 20px;
+      }
+
+      input[type="radio"]:checked + label::after {
+        transform: rotate(135deg);
+      }
+    }
+  }
+
+  .email-signup {
+    max-width: 600px;
+    margin: 20px auto 60px;
+    background: set.$bg-color;
+		border: 1px solid set.$bd-form;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    overflow: hidden;
+
+		input {
+			flex: 1;
+			border: 0;
+			outline: 0;
+			margin-left: 20px;
+			background: set.$bg-color;
+			color: #fff;
+		}
+
+		button {
+			background: set.$bg-button;
+			border: 0;
+			outline: 0;
+			color: set.$text-color;
+			font-size: 16px;
+			cursor: pointer;
+			padding: 15px 30px;
+		}
+  }
+
+  small {
+    font-size: 13px;
+  }
+}
