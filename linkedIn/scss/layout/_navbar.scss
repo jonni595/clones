@@ -1,0 +1,196 @@
+@use "../utils" as u;
+
+.navbar {
+  @include u.flex(row, center, space-between, nowrap);
+  background: u.$white;
+  padding: 6px 6%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+
+  &__left {
+    @include u.flex(row, center, center, nowrap);
+
+    .navbar-logo img {
+      @include u.size(30px);
+      margin-right: 15px;
+    }
+
+    .search-box {
+      @include u.flex(row, center, center, nowrap);
+      background: u.$bg-input;
+      @include u.size(250px);
+      border-radius: 20px;
+      padding: 0 15px;
+
+      img {
+        @include u.size(14px);
+      }
+
+      input {
+        @include u.size(100%);
+        background: transparent;
+        padding: 8px;
+        outline: none;
+        border: 0;
+        font-size: 13px;
+
+        @media (width < 600px) {
+          @include u.size(0);
+          padding: 0;
+        }
+      }
+
+      @media (width < 600px) {
+        background: transparent;
+        @include u.size(auto);
+        padding: 0;
+      }
+    }
+  }
+
+  &__center {
+    ul li {
+      display: inline-block;
+
+      a {
+        @include u.flex(row, center, center, nowrap);
+        margin: 5px 8px;
+        padding-right: 5px;
+        position: relative;
+
+        @media (width < 600px) {
+          padding-right: 0;
+          margin: 5px;
+        }
+
+        img {
+          @include u.size(30px);
+        }
+
+        span {
+          font-size: 12px;
+
+          @media (width < 600px) {
+            display: none;
+          }
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          @include u.size(0, 2px);
+          background: u.$tabs;
+          bottom: -12px;
+          left: 0;
+          transition: width 0.3s;
+        }
+
+        &:hover::after,
+        &.active-link::after {
+          @include u.size(100%);
+        }
+      }
+    }
+  }
+
+  &__right {
+    .online {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        content: "";
+        @include u.size(10px, 10px);
+        border: 2px solid u.$white;
+        border-radius: 50%;
+        right: 0;
+        top: 0;
+        background: u.$online;
+      }
+    }
+
+    .navbar-profile-img {
+      @include u.size(40px);
+      border-radius: 50%;
+      cursor: pointer;
+      position: relative;
+
+      @media (width < 600px) {
+        @include u.size(30px);
+      }
+    }
+  }
+
+  .profile-menu-wrap {
+    @include u.size(320px);
+    position: absolute;
+    top: 100%;
+    right: 5%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s;
+
+    &.open-menu {
+      max-height: 400px;
+    }
+
+    .profile-menu {
+      background: u.$heading1;
+      color: u.$white;
+      padding: 20px;
+      margin: 10px;
+
+      .user-info {
+        @include u.flex(row, center, flex-start, nowrap);
+
+        img {
+          @include u.size(50px);
+          border-radius: 50%;
+          margin-right: 15px;
+        }
+
+        h3 {
+          font-weight: 500;
+          font-size: 15px;
+        }
+
+        a {
+          color: #c9dbf8;
+          font-size: 12px;
+        }
+      }
+
+      hr {
+        border: 0;
+        @include u.size(100%, 1px);
+        background: u.$white;
+        margin: 15px 0 10px;
+      }
+
+      .profile-menu-link {
+        @include u.flex(row, center, flex-start, nowrap);
+        color: u.$white;
+        margin: 12px 0;
+        font-size: 14px;
+
+        img {
+          @include u.size(35px);
+          border-radius: 50%;
+          margin-right: 15px;
+        }
+
+        p {
+          @include u.size(100%);
+          font-size: 12px;
+          color: u.$heading3;
+        }
+
+        span {
+          color: u.$white;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,426 @@
+@use "../utils" as u;
+
+.container {
+  padding: 20px 6%;
+  @include u.flex(row, center, space-between, wrap);
+
+  @media (width < 600px) {
+    padding: 15px 3%;
+  }
+
+  &__left-sidebar,
+  &__right-sidebar {
+    @media (width < 600px) {
+      flex-basis: 100%;
+      position: relative;
+      top: unset;
+    }
+  }
+
+  &__left-sidebar {
+    flex-basis: 25%;
+    align-self: flex-start;
+    position: sticky;
+    top: 73px;
+
+    .sidebar-profile-box {
+      background: u.$white;
+
+      .sidebar-profile-info {
+        padding: 0 25px;
+
+        img {
+          @include u.size(90px);
+          border-radius: 50%;
+          background: u.$white;
+          padding: 4px;
+          margin-top: -45px;
+        }
+
+        h1 {
+          font-size: 20px;
+          font-weight: 600;
+          color: u.$heading1;
+        }
+
+        h3 {
+          font-size: 14px;
+          font-weight: 500;
+          color: u.$heading3;
+        }
+
+        ul {
+          margin: 20px 0;
+
+          li {
+            @include u.size(100%);
+            margin: 5px 0;
+            font-size: 13px;
+
+            span {
+              float: right;
+              color: u.$tabs;
+            }
+          }
+        }
+      }
+
+      .sidebar-profile-link {
+        @include u.flex(row, center, center, nowrap);
+        border-top: 1px solid #ccc;
+
+        a {
+          flex-basis: 50%;
+          @include u.flex(row, center, center, nowrap);
+          padding: 15px 0;
+          font-size: 13px;
+          border-left: 1px solid #ccc;
+
+          img {
+            @include u.size(20px);
+            margin-right: 10px;
+          }
+
+          &:first-child {
+            border-left: 0;
+          }
+        }
+      }
+    }
+
+    .sidebar-activity {
+      background: u.$white;
+      padding: 5px 25px;
+      margin: 12px 0;
+
+      h3 {
+        color: u.$heading3;
+        font-size: 14px;
+        font-weight: 500;
+        margin: 20px 0 10px;
+        text-transform: uppercase;
+      }
+
+      a {
+        @include u.flex(row, center, flex-start, nowrap);
+        font-size: 12px;
+        font-weight: 500;
+        color: #888;
+        margin: 3px 0;
+
+        img {
+          @include u.size(20px);
+          margin-right: 10px;
+        }
+      }
+
+      .discover-more-link {
+        border-top: 1px solid #ccc;
+        text-align: center;
+        margin-top: 20px;
+        margin-left: -25px;
+        margin-right: -25px;
+
+        a {
+          color: u.$tabs;
+          display: inline-block;
+          margin: 10px 0;
+        }
+      }
+    }
+  }
+
+  &__right-sidebar {
+    flex-basis: 25%;
+    align-self: flex-start;
+    position: sticky;
+    top: 73px;
+
+    .sidebar-news {
+      background: u.$white;
+      padding: 10px 25px;
+
+      .info-icon {
+        @include u.size(15px);
+        float: right;
+        margin-top: 10px;
+      }
+
+      h3 {
+        font-size: 18px;
+        font-weight: 600;
+        color: u.$heading3;
+        margin: 10px 0 30px;
+      }
+
+      a {
+        font-size: 12px;
+        font-weight: 600;
+        margin-top: 10px;
+        margin-bottom: 1px;
+      }
+
+      span {
+        font-size: 11px;
+      }
+
+      .read-more-link {
+        color: u.$tabs;
+        font-weight: 500;
+        margin: 20px 0 10px;
+      }
+    }
+
+    .sidebar-ad {
+      background: u.$white;
+      padding: 15px 25px;
+      text-align: center;
+      margin: 12px 0;
+      font-size: 12px;
+
+      .ad-images {
+        @include u.flex(row, center, center, nowrap);
+
+        img {
+          @include u.size(60px);
+          border-radius: 50%;
+          margin: 4px;
+        }
+      }
+
+      small {
+        float: right;
+        font-weight: 500;
+      }
+
+      p {
+        margin-top: 30px;
+        margin-bottom: 10px;
+      }
+
+      b {
+        display: block;
+        font-weight: 600;
+        margin-top: 10px;
+      }
+
+      .ad-link {
+        display: inline-block;
+        border: 1px solid u.$tabs;
+        border-radius: 30px;
+        padding: 5px 15px;
+        color: u.$tabs;
+        font-weight: 500;
+        margin: 20px auto 10px;
+      }
+    }
+
+    .sidebar-useful-links {
+      padding: 15px 25px;
+      text-align: center;
+
+      a {
+        display: inline-block;
+        font-size: 14px;
+        margin: 4px 2px;
+      }
+
+      .copyright-msg {
+        @include u.flex(row, center, center, nowrap);
+        font-size: 12px;
+        margin-top: 10px;
+        font-weight: 500;
+
+        img {
+          @include u.size(18px);
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+
+  &__main-content {
+    flex-basis: 47%;
+    align-self: self-start;
+
+    @media (width < 600px) {
+      flex-basis: 100%;
+    }
+
+    .create-post {
+      background: u.$white;
+
+      .create-post-input {
+        padding: 20px 25px 10px;
+        @include u.flex(row, flex-start, center, nowrap);
+
+        img {
+          @include u.size(35px);
+          border-radius: 50%;
+          margin-right: 10px;
+        }
+
+        textarea {
+          @include u.size(100%);
+          border: 0;
+          outline: 0;
+          resize: none;
+          background: transparent;
+          margin-top: 8px;
+          font-size: 12px;
+          text-transform: capitalize;
+
+          &::placeholder {
+            font-weight: 600;
+          }
+        }
+      }
+
+      .create-post-links {
+        @include u.flex(row, flex-start, center, nowrap);
+
+        li {
+          @include u.flex(row, center, center, nowrap);
+          border-top: 1px solid #ccc;
+          border-right: 1px solid #ccc;
+          flex-basis: 25%;
+          height: 40px;
+          font-size: 13px;
+          cursor: pointer;
+
+          img {
+            @include u.size(15px);
+            margin-right: 5px;
+          }
+
+          &:last-child {
+            background: u.$tabs;
+            color: u.$white;
+            border-top: 0;
+            border-right: 0;
+          }
+        }
+      }
+    }
+
+    .sort-by {
+      @include u.flex(row, center, flex-start, none);
+      margin: 10px 0;
+
+      hr {
+        flex: 1;
+        border: 0;
+        height: 1px;
+        border-bottom: 1px solid #ccc;
+      }
+
+      p {
+        font-size: 11px;
+        padding-left: 5px;
+
+        span {
+          font-weight: 600;
+          cursor: pointer;
+
+          img {
+            @include u.size(12px);
+            margin-left: 3px;
+            display: inline-block;
+          }
+        }
+      }
+    }
+
+    .post {
+      background: u.$white;
+      padding: 20px 25px 5px;
+      margin: 5px 0 15px;
+
+      &__author {
+        @include u.flex(row, flex-start, flex-start, nowrap);
+        margin-bottom: 20px;
+
+        img {
+          @include u.size(35px);
+          border-radius: 50%;
+          margin-right: 10px;
+        }
+
+        h1 {
+          font-size: 18px;
+          font-weight: 600;
+          color: #333;
+        }
+
+        small {
+          display: block;
+          margin-bottom: -2px;
+        }
+      }
+
+      p {
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+
+      .post-stats {
+        @include u.flex(row, center, space-between, wrap);
+        font-size: 12px;
+        border-bottom: 1px solid #ccc;
+        padding: 6px 0 6px;
+
+        div {
+          @include u.flex(row, center, flex-start, nowrap);
+          @media (width < 600px) {
+            margin: 2px 0;
+          }
+
+          .linked-users {
+            margin-left: 10px;
+          }
+        }
+
+        img {
+          @include u.size(15px);
+          margin-right: -5px;
+        }
+      }
+
+      .post-activity {
+        @include u.flex(row, center, space-between, nowrap);
+        padding: 10px 0;
+        font-size: 14px;
+        font-weight: 500;
+
+        div {
+          @include u.flex(row, center, flex-start, nowrap);
+
+          .post-activity-user-icon {
+            @include u.size(22px);
+            border-radius: 50%;
+          }
+
+          .post-activity-arrow-icon {
+            @include u.size(12px);
+            margin-left: 5px;
+          }
+        }
+
+        .post-activity-link {
+          @media (width < 600px) {
+            display: none;
+          }
+
+          img {
+            @include u.size(18px);
+            margin-right: 8px;
+
+            @media (width < 600px) {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
